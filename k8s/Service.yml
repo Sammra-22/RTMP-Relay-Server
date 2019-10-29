@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: esw-rtmp
+  name: esw-rtmp
+spec:
+  type: LoadBalancer
+  selector:
+    pod: esw-rtmp
+  ports:
+  - name: ext-rtmp-port
+    port: 1935
+    protocol: TCP
+    targetPort: rtmp-port
+  - name: ext-http-port
+    port: 8080
+    protocol: TCP
+    targetPort: http-port
